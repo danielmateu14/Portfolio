@@ -162,7 +162,7 @@ main {
 /*FOTO DE LOS LADOS*/
 aside {
   flex: 1;
-  background-image: url("/Proyectos/GestremIllice/imagenes/descarga.jpeg");
+  background-image: url("/img/hero.jpg");
   background-repeat: repeat;
   background-size: auto;
   height: 100%;
