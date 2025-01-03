@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestrem Illice</title>
+    <link rel="stylesheet" href="estilos.css"/>
+  </head>
+  <body>
+    
+    <!-- Modal de bienvenida -->
+    <div id="modalBienvenida" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>¡Bienvenido al Gestor de Entrenamientos, Gestrem Illice!</h2>
+        <br/>
+        <p>
+          Esta aplicación te permite registrar y gestionar tus entrenamientos
+          deportivos de forma fácil y eficiente.
+        </p>
+      </div>
+    </div>
+
+                                                           <!-- HEADER -->
+    <header>
+      <div class="titulo">
+        <h1>Gestrem Illice</h1>
+        <h4>Tu gestor de entrenamientos</h4>
+      </div>
+
+      <!-- Menú de navegación -->
+      <nav>
+        <ul class="menu-container">
+          <li class="item"><a href="#inicio" onclick="desplegarInicio()">Inicio</a></li>
+          <li class="item"><a href="#entrenamientos" onclick="desplegarEntrenamientos()">Entrenamientos</a></li>
+          <li class="item"><a href="#foro" onclick="desplegarForo()">Foro</a></li>
+          <li class="item"><a href="#nosotros" onclick="desplegarNosotros()">Sobre Nosotros</a></li>
+        </ul>
+      </nav>
+
+      <!-- Boton de estilo -->
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round">
+            <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3zm0-2c.28 0 .5-.22.5-.5v-3c0-.28-.22-.5-.5-.5s-.5.22-.5.5v3c0 .28.22.5.5.5zm0 13c-.28 0-.5.22-.5.5v3c0 .28.22.5.5.5s.5-.22.5-.5v-3c0-.28-.22-.5-.5-.5zm8.5-6.5h-3c-.28 0-.5.22-.5.5s.22.5.5.5h3c.28 0 .5-.22.5-.5s-.22-.5-.5-.5zm-14 0h-3c-.28 0-.5.22-.5.5s.22.5.5.5h3c.28 0 .5-.22.5-.5s-.22-.5-.5-.5z"/>
+            </svg>
+            <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+            </svg>
+          </div>
+        </label>
+      </div>
+    </header>
+
+                                                         <!-- MAIN -->
+    <main>
+      <!-- Aside para imagen de fondo a los lados -->
+      <aside></aside>
+
+        <!-- Contenido principal -->
+      <section class="container-main">
+        <section id="inicio">
+
+          <!-- Login/Registro -->
+          <div id="loginForm" class="form-container" style="display: block">
+            <h2>Acceso</h2>
+            <input type="text" id="usuarioLogin" placeholder="Usuario" />
+            <input type="password" id="passwordLogin" placeholder="Contraseña"/>
+            <button id="btnLogin">Entrar</button>
+            <div id="aunNo"><a href="#" onclick="nuevoCliente()">¿Aún no estás registrado?</a></div>
+          </div>
+
+          <!-- Formulario Crear Persona -->
+          <form id="formCrearPersona" class="form-container">
+            <h2>Nuevo cliente</h2>
+            <label>Nombre(usuario): <input type="text" id="nombre" /></label><br/>
+            <span id="errorNombre" class="error hidden">El nombre no puede estar vacío.</span><br />
+
+            <label>Correo:<input type="text" id="correo" placeholder="ejemplo@dominio.com" /> </label><br />
+            <span id="errorCorreo" class="error hidden">El correo debe tener un formato válido.</span><br />
+            
+            <label>Contraseña: <input type="password" id="passwordRegistro"  placeholder="Min. 8: 1 may, 1 min, 1 num, 1 esp" /></label><br />
+            <span id="errorPassword" class="error hidden">La contraseña no cumple los requisitos.</span><br />
+
+            <label>Altura (cm): <input type="number" id="altura" /></label><br />
+            <span id="errorAltura" class="error hidden">La altura debe ser un número positivo.</span><br />
+
+            <label>Peso (kg): <input type="number" id="peso" /></label><br />
+            <span id="errorPeso" class="error hidden">El peso debe ser un número positivo.</span><br />
+
+            <label>Edad: <input type="number" id="edad" /></label><br />
+            <span id="errorEdad" class="error hidden">La edad debe ser un número positivo.</span><br />
+
+            <button type="button" id="btnCrearPersona">Crear Persona</button>
+          </form>
+        </section>
+
+        <!-- Entrenamientos -->
+
+        <section id="entrenamientos">
+
+          <!-- Título y estadísticas -->
+          <h1 id="titulo" style="display: none"></h1>
+          <h4 id="totalKilometros"></h4>
+          <h4 id="niveles"></h4>
+
+          <!-- Acciones -->
+          <div id="acciones" style="display: none">
+            <button id="btnAñadirEntrenamiento">Añadir Entrenamiento</button>
+            <button id="btnBorrarUsuario">Salir de la cuenta</button>
+          </div>
+
+          <!-- Formulario Añadir Entrenamiento -->
+          <form id="formAñadirEntrenamiento" class="form-container" style="display: none; margin: 8px auto;">
+            <h2>Nuevo Entrenamiento</h2>
+
+            <label>Distancia (km): <input type="number" id="distancia" /></label><br />
+            <span id="errorDistancia" class="error hidden">Debe ser un número positivo.</span><br />
+
+            <label>Tiempo (minutos): <input type="number" id="tiempo" /></label><br />
+            <span id="errorTiempo" class="error hidden">Debe ser un número positivo.</span><br />
+            
+            <button type="button" id="btnGuardarEntrenamiento">Guardar</button>
+          </form>
+
+          <div id="listaEntrenamientos">
+
+            <!-- Búsqueda por fechas -->
+            <div id="busquedaFechas" class="form-container" style="display: none">
+              <h2>Buscar por fechas</h2>
+              <input type="date" id="fechaInicio" />
+              <input type="date" id="fechaFin" />
+              <button id="btnBuscar">Buscar</button>
+            </div>
+
+            <h2 id="tituloEntrenamientos">Mis Entrenamientos</h2>
+            
+
+            <!-- Selector de orden -->
+            <select id="ordenEntrenamientos" style="margin: 1em 0">
+              <option value="">Ordenar por...</option>
+              <option value="tiempo">Tiempo</option>
+              <option value="velocidad">Velocidad</option>
+              <option value="distancia">Distancia</option>
+            </select>
+
+            <div id="contenedor-entrenamientos" class="contenedor-entrenamientos">
+              <!-- Los entrenamientos se añadirán aquí dinámicamente -->
+              <div id="sinEntrenamientos">
+                <p>No hay entrenamientos actualmente.</p>
+              </div>
+            </div>
+            <br/><br/>
+          </div>
+        </section>
+
+        <!-- Foro -->
+        <section id="foro">
+          <h2 class="tituloForo">Foro General</h2>
+          <div  id="foro" class="form-container">
+            <h2 style="text-align: left;">Comenta en el foro:</h2>
+            <input type="text" id="nickForo" placeholder="Tu nombre" />
+            <textarea id="comentarioForo" placeholder="Tu comentario"></textarea>
+            <button id="btnPublicar" style="width: 97%">Publicar</button>
+            <div id="comentarios"></div>
+          </div>
+          <br/><br/>
+        </section>
+
+        <!-- Sobre Nosotros -->
+        <section id="nosotros">
+          <h1>Sobre Nosotros</h1>
+
+          <img src="/imagenes/nosotros.jpg" alt="" />
+          <p>
+            Fundada en 2024 en la vibrante ciudad de Elche, nuestra empresa
+            nació con un propósito claro: revolucionar la forma en que las
+            personas gestionan y optimizan sus entrenamientos. Inspirados por la
+            creciente demanda de soluciones personalizadas y accesibles para
+            mejorar el rendimiento físico y alcanzar metas deportivas, decidimos
+            crear una plataforma integral que combina tecnología innovadora con
+            una experiencia de usuario intuitiva.
+          </p>
+          <br />
+          <p>
+            Desde nuestros inicios, hemos trabajado incansablemente para
+            proporcionar herramientas que se adapten a las necesidades de
+            deportistas de todos los niveles, desde aficionados hasta
+            profesionales. Nuestro equipo, compuesto por expertos en deporte,
+            tecnología y diseño, comparte una visión común: convertirnos en el
+            aliado imprescindible para quienes buscan superarse cada día.
+          </p>
+          <br />
+          <p>
+            Nuestra sede en Elche no es solo un lugar de trabajo, sino un
+            espacio de creatividad y colaboración donde las ideas se transforman
+            en soluciones reales. La ciudad, con su rica historia, cultura y
+            espíritu emprendedor, ha sido la cuna perfecta para desarrollar una
+            empresa que mira hacia el futuro con ambición y compromiso.
+          </p>
+          <br />
+          <p>
+            Hoy, seguimos creciendo, impulsados por la confianza de miles de
+            usuarios y la pasión por marcar la diferencia en el mundo del
+            entrenamiento. Porque en nuestra empresa, no solo gestionamos
+            entrenamientos: ayudamos a construir historias de éxito.
+          </p>
+          <br /><br />
+        </section>
+      </section>
+
+      <!-- Aside para imagen de fondo -->
+      <aside></aside>
+    </main>
+
+
+                                                              <!-- FOOTER -->
+    <footer>
+
+      <!-- Contenedor para el slideshow de imágenes -->
+      <div id="slideshow" class="slideshow-container">
+        <img id="imagenSlideshow" src="" alt="Imagen de Slideshow" />
+      </div>
+
+      <!-- Politicas-->
+      <div class="copy">
+        <p>Todos los derechos reservados. Daniel Mateu Sánchez.</p>
+        <br />
+        <a href="#">Politica de privacidad</a> | <a href="#">Cookies</a> | <a href="#">Copyright</a>
+      </div>
+
+      <!-- Mapa -->
+      <div class="mapa">
+        <p>Nos encontramos aqui:</p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2928.702510841905!2d-0.6138350804362694!3d38.29070990869815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2ses!4v1735263515174!5m2!1ses!2ses"
+          width="250"
+          height="100"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </footer>
+    <script src="entrenamientos.js"></script>
+  </body>
+</html>
