@@ -162,7 +162,7 @@ main {
 /*FOTO DE LOS LADOS*/
 aside {
   flex: 1;
-  background-image: url("imagenes/index.avif");
+  background-image: url("https://danielmateu.es/Proyectos/GestremIllice/imagenes/index.avif");
   background-repeat: repeat;
   background-size: cover;
   height: 100%;
